@@ -1,7 +1,7 @@
 const express = require('express');
 const userController = require('../controller/userController')
 const router = express.Router();
-//burada token kontrolü yapılacak
+ 
 
 router.use((req, res, next) => {
     var token = req.body.token || req.param('token') || req.headers['x-access-token'];

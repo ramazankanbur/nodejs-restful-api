@@ -1,5 +1,5 @@
 let UserModel = require('../model/user');
-let userManager = require('../dataMager/userManager');
+let userManager = require('../dataManager/userManager');
 let jwt = require('jsonwebtoken');
 let coreConfig = require('../config/projectConfig').coreConfig;
 
