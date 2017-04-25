@@ -12,10 +12,10 @@ router.post('/register', (req, res, next) => {
     var promise = userController.register(req.body);
     promise.then((registerResult) => {
         if (registerResult.success) {
-            res.send({ message: `${registerResult.user.name} kullanıcısı başarılı bir şekilde eklendi` });
+            res.send({ message: `${registerResult.user.name} kullanıcısı başarılı bir şekilde eklendi`, success:true });
         }
         else {
-            res.send({ message: `Kullanıcı ekleme esnasında bir hata oluştu. ${registerResult.message}` });
+            res.send({ message: `Kullanıcı ekleme esnasında bir hata oluştu. ${registerResult.message}`, success:false });
         }
     });                   
 });
@@ -24,10 +24,10 @@ router.post('/login', (req, res, next) => {
     var promise = userController.loginControl(req.body);
     promise.then((loginControlResult) => {
         if (loginControlResult.success) {
-            res.send({ token: loginControlResult.token, message: loginControlResult.message });
+            res.send({ token: loginControlResult.token, message: loginControlResult.message,success:true });
         }
         else {
-            res.send({ message: loginControlResult.message });
+            res.send({ message: loginControlResult.message ,success:false});
         }
     });
 });

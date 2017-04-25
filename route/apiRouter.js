@@ -11,7 +11,7 @@ router.use((req, res, next) => {
             req.decoded = verifyResult.decoded;
             next();
         } else {
-            return res.json({ success: false, message: verifyResult.message })
+            return res.status(403).json({ success: false, message: verifyResult.message })
         }
     }
     else {
@@ -27,10 +27,10 @@ router.get('/users', (req, res, next) => {
     console.log(`Token sahibi ${req.decoded.name}`);
     var userPromise = userController.getAllUser().then((users) => {
         if (users.success) {
-            res.send(users.users);
+            res.send({users:users, success:true});
         }
         else {
-            res.send({ message: users.message });
+            res.send({ message: users.message, success:false });
         }
     });
     console.log('user lar çekildi');
